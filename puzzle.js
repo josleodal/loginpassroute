@@ -2,97 +2,105 @@
 
 //Usado?: 
   const middlewares = require('./middlewares');
-//--- Explicación: 
+//--- Explicación:  Importa las funciones  middlewares
+
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const bodyParser = require('body-parser');
-//--- Explicación:
+//--- Explicación: Importa 'body-parser' para  el análisis de las solicitudes HTTP
+
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const session = require('express-session');
-//--- Explicación:
+//--- Explicación: Importa 'express-session' para manejar sesiones en Express.
+
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const express = require('express');
-//--- Explicación:
+//--- Explicación: Importa el framework Express 
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const bodyParser = require('body-parser');
-//--- Explicación:
+//--- Explicación: Importa 'body-parser' para  el análisis de las solicitudes HTTP.
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const session = require('express-session');
-//--- Explicación:
+//--- Explicación: Importa 'express-session' para manejar sesiones en Express.
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const dotenv = require('dotenv');
-//--- Explicación:
+//--- Explicación: Importa 'dotenv' para cargar variables de entorno.
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const middlewares = require('./middlewares');
-//--- Explicación:
+//--- Explicación: Importa las funciones  middlewares
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const routes = require('./routes');
-//--- Explicación:
+//--- Explicación:  Importa 'routes' 
+
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 dotenv.config();
-//--- Explicación:
+//--- Explicación: Carga las variables de entorno
+
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const app = express();
-//--- Explicación:
+//--- Explicación:  Crea una instancia de la aplicación Express
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const PORT = 4000;
-//--- Explicación:
+//--- Explicación: Define el número de puerto 
 
 // -------------------------------------------------------------------------------------
 
 //Usado?: 
 const dotenv = require('dotenv');
-//--- Explicación:
+//--- Explicación: Importa 'dotenv' para cargar variables de entorno.
+
 
 // -------------------------------------------------------------------------------------
 
 //Usado?:
 dotenv.config();
-//--- Explicación:
+//--- Explicación: Carga las variables de entorno
 
 // -------------------------------------------------------------------------------------
 
 //Usado?:
 middlewares.setupApp(app);
-//--- Explicación: 
+//--- Explicación: Llama a la función 'setupApp' del módulo 'middlewares', pasando la aplicación Express como argumento.
+
 
 // -------------------------------------------------------------------------------------
 
 //Usado?:
 routes.setup(app);
-//--- Explicación: 
+//--- Explicación: Llama a la función 'setup' del módulo 'routes', pasando la aplicación Express como argumento.
+
 
 // -------------------------------------------------------------------------------------
 
@@ -107,7 +115,8 @@ const validarPalabraMiddleware = (req, res, next) => {
     res.redirect('/?error=1');
   }
 };
-//--- Explicación: 
+//--- Explicación: Función  para validar una palabra 
+
 
 
 // -------------------------------------------------------------------------------------
@@ -124,7 +133,8 @@ const setup = (app) => {
     }
   //Aquí va código dentro
 })}
-//--- Explicación: 
+//--- Explicación: Función que configura rutas 
+
 
 
 // -------------------------------------------------------------------------------------
@@ -144,12 +154,12 @@ res.send(`
     </body>
   </html>
 `);
-//--- Explicación: 
+//--- Explicación: Envia una respuesta HTML
 
 
 // -------------------------------------------------------------------------------------
 
-
+//Usado?:
 const setupAPP = (app) => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(session({
@@ -158,6 +168,8 @@ const setupAPP = (app) => {
     saveUninitialized: true,
   }));
 };
+
+ //Explicación: Configura middleware 'body-parser' y 'express-session'
 
 //Usado?:
 app.post('/profile', middlewares.validarPalabraMiddleware, (req, res) => {
@@ -168,14 +180,14 @@ app.post('/profile', middlewares.validarPalabraMiddleware, (req, res) => {
     </form>
   `);
 });
-//--- Explicación: 
-
+//--- Explicación: Maneja solicitudes POST en la ruta 
 // -------------------------------------------------------------------------------------
 
 //Usado?:
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//--- Explicación: 
+//--- Explicación: Aplica el middleware 'body-parser' para analizar el cuerpo de las solicitudes con codificación URL.
+
 
 // -------------------------------------------------------------------------------------
 
@@ -186,7 +198,7 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-//--- Explicación: 
+//--- Explicación: Aplica 'express-session'
 
 // -------------------------------------------------------------------------------------
 
@@ -194,7 +206,7 @@ app.use(session({
 app.listen(PORT, () => {
   console.log(`Servidor en ejecución en http://localhost:${PORT}`);
 });
-//--- Explicación: 
+//--- Explicación: Inicia el servidor Express
 
 // -------------------------------------------------------------------------------------
 
@@ -206,7 +218,7 @@ const verificarSesionMiddleware = (req, res, next) => {
     res.redirect('/?error=2');
   }
 };
-//--- Explicación: 
+//--- Explicación: Función para verificar sesión 
 
 // -------------------------------------------------------------------------------------
 
@@ -220,7 +232,7 @@ app.get('/profile', middlewares.verificarSesionMiddleware, (req, res) => {
     </form>
   `);
 });
-//--- Explicación: 
+//--- Explicación:  Solicitud GET en la ruta '/profile'
 
 // -------------------------------------------------------------------------------------
 
@@ -234,7 +246,7 @@ app.post('/logout', (req, res) => {
     res.redirect('/');
   });
 });
-//--- Explicación: 
+//--- Explicación: Solicitud POST en la ruta '/logout'
 
 // -------------------------------------------------------------------------------------
 
@@ -242,8 +254,7 @@ app.post('/logout', (req, res) => {
 module.exports = {
   setup,
 };
-//--- Explicación:
-
+//--- Explicación:Exporta la función 'setup' 
 // -------------------------------------------------------------------------------------
 
 //Usado?:
@@ -252,7 +263,8 @@ module.exports = {
   verificarSesionMiddleware,
   setupAPP,
 };
-//--- Explicación:
+//--- Explicación:Exporta varias funciones del Middleware
+
 
 // -------------------------------------------------------------------------------------
 
